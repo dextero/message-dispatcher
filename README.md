@@ -11,7 +11,7 @@ Message receivers are determined by the type of the message sent.
 - [ ] const methods :<
 
 ## note
-- type_info.h uses VS only __FUNCSIG__ makro
+- type_info.h uses VS only \_\_FUNCSIG__ makro
 
 ## example
 
@@ -28,3 +28,4 @@ int main()
     pk::message_dispatcher::unbind(receive_value);
 }
 ```
+\
