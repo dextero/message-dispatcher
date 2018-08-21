@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="samples">
+      <UniqueIdentifier>{aeb68d54-d667-451d-ace3-a841d715aff6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\samples\main.cpp">
+      <Filter>samples</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\message_dispatcher.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\message_token.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\message_dispatcher.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\message_token.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\type_info.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\function_traits.h">
+      <Filter>source</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
