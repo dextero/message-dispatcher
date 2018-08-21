@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "message_dispatcher.h"
+#include "message_data.h"
 
 namespace pk
 {
@@ -11,7 +11,7 @@ namespace pk
         message_token(void) = default;
 
         message_token(bool scope_exit) : _scope_exit{scope_exit} {};
-        message_token(message_dispatcher::message_data entry, bool scope_exit)
+        message_token(pk::detail::message_data entry, bool scope_exit)
             : _data{entry}, _scope_exit{scope_exit}
         {};
         ~message_token();
@@ -24,7 +24,7 @@ namespace pk
         #pragma endregion
 
         #pragma region variables
-        std::vector<message_dispatcher::message_data> _data;
+        std::vector<pk::detail::message_data> _data;
         std::vector<void*> _filters;
         #pragma endregion
 

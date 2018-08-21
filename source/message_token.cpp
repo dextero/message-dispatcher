@@ -1,4 +1,5 @@
 #include "message_token.h"
+#include "message_dispatcher.h"
 
 namespace pk
 {

@@ -47,7 +47,13 @@ namespace pk
         #pragma region methods
         static const char* name()
         {
+#ifdef __FUCNSIG__
             return __FUNCSIG__;
+#elif defined(__PRETTY_FUNCTION__)
+            return __PRETTY_FUNCTION__:
+#else
+            return __func__;
+#endif
         };
         #pragma endregion
     };

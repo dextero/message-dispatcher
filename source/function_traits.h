@@ -1,5 +1,15 @@
 #pragma once
 
+#include <type_traits>
+
+#ifndef __cpp_lib_type_trait_variable_templates
+namespace std
+{
+    template <typename T>
+    constexpr bool is_function_v = std::is_function<T>::value;
+}
+#endif
+
 namespace pk
 {
     template <typename F>

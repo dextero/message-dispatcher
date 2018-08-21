@@ -23,7 +23,7 @@ namespace pk
             ++i;
         }
     }
-    void message_dispatcher::unbind_function(void* obj)
+    void message_dispatcher::unbind_function(void *obj)
     {
         for(size_t i = 0; i < bindings.size(); ++i)
         {

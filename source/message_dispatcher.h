@@ -5,16 +5,14 @@
 
 #include "function_traits.h"
 #include "type_info.h"
+#include "message_token.h"
+#include "message_data.h"
 
 namespace pk
 {
-    class message_token;
-
     class message_dispatcher
     {
-        #pragma region forward declarations
-        struct message_data;
-        #pragma endregion
+        using message_data = ::pk::detail::message_data;
 
     public:
         #pragma region methods
@@ -49,34 +47,6 @@ namespace pk
         #pragma endregion
 
     private:
-        #pragma region types
-        struct message_data
-        {
-            #pragma region Operator overloads
-            bool operator==(const message_data& other) const noexcept
-            {
-                return message_type == other.message_type &&
-                    functor_pointer == other.functor_pointer &&
-                    receiver == other.receiver;
-            }
-            bool operator==(message_data&& other) const noexcept
-            {
-                return message_type == other.message_type &&
-                    functor_pointer == other.functor_pointer &&
-                    receiver == other.receiver;
-            }
-            #pragma endregion
-
-            #pragma region variables
-            std::function<void(void*)> method;
-            pk::type message_type;
-            void* functor_pointer;
-            void* receiver;
-            message_token* token = nullptr;
-            #pragma endregion
-        };
-        #pragma endregion
-
         #pragma region variables
         static std::vector<message_data> bindings;
         #pragma endregion
@@ -184,11 +154,13 @@ namespace pk
     }
 
     template <typename T>
-    static void message_dispatcher::unbind(T* obj)
+    void message_dispatcher::unbind(T* obj)
     {
         if constexpr (std::is_function_v<T>)
         {
-            unbind_function(obj);
+            static_assert(sizeof(T*) <= sizeof(uintptr_t),
+                          "unsupported function pointer size");
+            unbind_function(reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(obj)));
         }
         else
         {
@@ -198,7 +170,7 @@ namespace pk
     }
 
     template <typename T>
-    static void message_dispatcher::unbind(T& obj)
+    void message_dispatcher::unbind(T& obj)
     {
         unbind_object(&obj);
     }
