@@ -10,6 +10,9 @@ Message receivers are determined by the type of the message sent.
 - [x] lambdas
 - [ ] const methods :<
 
+## note
+- type_info.h uses VS only __FUNCSIG__ makro
+
 ## example
 
 ```cpp
