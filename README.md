@@ -12,6 +12,7 @@ Message receivers are determined by the type of the message sent.
 
 ## note
 - type_info.h uses VS only \_\_FUNCSIG__ makro
+- publisher-subscriber pattern only 
 
 ## example
 
