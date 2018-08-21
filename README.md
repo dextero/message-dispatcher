@@ -28,4 +28,3 @@ int main()
     pk::message_dispatcher::unbind(receive_value);
 }
 ```
-\
